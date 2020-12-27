@@ -63,6 +63,78 @@
             
         </style>
 
+        <style>
+            a {
+                outline: none;
+                box-shadow: none;
+                cursor: pointer;
+            }
+            a:hover{
+                background-color: yellow;
+                text-decoration: none;
+                outline: none;
+                box-shadow: none;
+            }
+            #fixedMenuArea{
+                text-align: left;
+                width: 100%;
+                
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                
+            }
+
+            #menuList{
+                display: none;
+                list-style-type: none;
+            }
+
+            #subDummyMenuList{
+                display: none;
+                list-style-type: none;
+            }
+
+            .menuListItem{
+
+                width: fit-content;
+                margin-bottom: 10px;
+                padding-inline: 5px;
+            
+                font-size: 16px;
+                border: 1px solid #e9e9e9;
+                
+                background-color: rgba(255, 255, 0, 0.35);
+                
+            }
+
+            .subMenuInlineItem{
+                display: inline;
+            }
+
+            #fixedMenuArea{
+                padding: 5px;
+            }
+
+            #menuBtn{
+                
+                position: relative;
+                border-radius: 200px;
+                height: 40px;
+                width: 40px;
+                background-color: rgba(255, 255, 0, 0.35);
+                outline: none;
+                box-shadow: none;
+
+            }
+            
+            #DummyMenuBtn{
+                background-color: rgba(255, 255, 0, 0.35);
+                outline: none;
+                box-shadow: none;
+            }
+        </style>
+
     </head>
 
     <body style="padding: 10px;">
@@ -88,7 +160,7 @@
                         <li> <a href="#">Login</a></li>
                     </ul>
 
-                    <div style="text-align: center; padding: 5px"> <h4> Developed while learning at Sunbeam </h4> </div>
+                    <div style="text-align: center; padding: 5px"> <h4 style="font-weight: lighter;"> Developed while learning at Sunbeam </h4> </div>
 
                 </nav>
 
@@ -313,6 +385,33 @@
 
         </div>
 
+        <div id="fixedMenuArea">
+            <div id="menuArea">
+            <ul id="menuList">
+                <li class="menuListItem">
+
+                    <a onclick="showDummy()"> Dummy </a>
+
+                    <ul id="subDummyMenuList">
+                        
+                        <li class="subMenuInlineItem"> <a href="#">Dummy 1</a> | </li>
+                        <li class="subMenuInlineItem"> <a href="#">Dummy 2</a> | </li>
+                        <li class="subMenuInlineItem"> <a href="#">Dummy 3</a> | </li>
+                        
+                    </ul>
+                </li>
+                <li class="menuListItem"> <a>Home</a> </li>
+                <li class="menuListItem"> <a onclick="scrollToTop()">Top</a> </li>
+            </ul>
+            
+
+            </div>
+        
+
+        <button id="menuBtn" onclick="showMenu()"><span class="glyphicon glyphicon-menu-up"></span></button> 
+
+        </div>
+
         <script>
             //make class active for li of the link clicked 
             $(".nav li").click(function(){
@@ -320,5 +419,44 @@
                 $(this).addClass("active");
             });
         </script>
+
+        <script>
+            var showMenuFlag = false;
+            var showDummyFlag = false;
+
+            var menuListObj = document.getElementById("menuList");
+            var DummyMenuList = document.getElementById("subDummyMenuList");
+
+            function showMenu(){
+                if(showMenuFlag){
+                    menuListObj.style.display= "none";
+                    showMenuFlag=false;
+                }
+                else{
+                    menuListObj.style.display= "inline";
+                    showMenuFlag=true;
+                }
+            }
+
+            function showDummy(){
+                if(showDummyFlag){
+                    DummyMenuList.style.display= "none";
+                    showDummyFlag=false;
+                }
+                else{
+                    DummyMenuList.style.display= "inline";
+                    showDummyFlag=true;
+                }
+            }
+
+            function scrollToTop(){
+                
+                menuListObj.style.display="none";
+                var showMenuFlag = true;
+                window.scrollTo(0,0);
+            }
+
+        </script>
+
     </body>
 </html>
