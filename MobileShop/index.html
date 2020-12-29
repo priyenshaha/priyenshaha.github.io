@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            Mobile Shoppe
+        </title>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <style>
+            .container{
+                background-color: #d7d7d7;
+            }
+           .myCardElement{
+                margin-top: 1em;
+                padding: 5px;
+                box-shadow: black;
+           }
+           .myCardElement:hover{
+               
+               border: 2px solid black;
+               border-radius: 20px;
+           }
+
+           .card:hover{
+                background-color: #fff3dd;
+
+           }
+            .card-title{
+                
+                margin-top: 1em;
+            }
+            .btn{
+                margin-top: 1em; 
+                width: 100%;
+            }
+
+            #cartIcon{
+                position: fixed;
+                
+                right: 10px;
+                top: 10px;
+            }
+            
+            .overlay{
+                height: 100%;
+                width: 0%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+
+                background-color: rgba(100,100,100,0.4);
+                overflow-x: auto;
+                transition: 0.5s;
+
+            }
+            .overlay-content{
+                padding: 2em;
+                top: 25%;
+                width: 100%;
+                text-align: center;
+            }
+            #cartTitle{
+                
+                margin-top: 4em;
+                border-radius: 10px; 
+                background-color: rgb(66, 110, 252);
+                color: white;
+                display: block;
+            }
+
+            .overlay-content p{
+                border-radius: 10px;
+                display: block; 
+                float: right; 
+                background-color: #fa3636;
+                cursor: pointer;
+            }
+            
+            .cartItem{
+                background-color: ghostwhite;
+                border-radius: 10px;
+                padding: 5px;
+               
+            }
+
+            .cartItem td{
+                vertical-align: middle;
+                text-align: left;
+            }
+
+            .image{
+                height: 40px;
+                width: 40px;
+                margin: auto;
+            }
+            
+            .quantity{
+                width: 2em;
+            }
+
+            #remove{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        
+        <div class="container" style="width: 100%;">
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <!-- individual cards here-->
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/oneplus8.jpg" alt="OnePlus8" class="img-fluid">
+                                <div class="card-title"> <h4>OnePlus 8</h4> </div>
+                                <br>
+                                <div class="card-text"><h2>47,200/-</h2></div>
+                                <div class="card-text">OnePlus 8 <br> Description</div>
+
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/oneplus7T.jpg" alt="OnePlus7T" class="img-fluid">
+                                <div class="card-title"> <h4>OnePlus 7T </h4>  </div>
+                                <br>
+                                <div class="card-text"><h2>46,599/-</h2></div>
+                                <div class="card-text">OnePlus 7T <br> Description</div>
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/galaxyA51.jpg" alt="galaxyA51" class="img-fluid">
+                                <div class="card-title"> <h5>Samsung Galaxy A51</h5> </div>
+                                <br>
+                                <div class="card-text"><h2> 19,850/-</h2></div>
+                                <div class="card-text">Samsung Galaxy A51 <br> Description</div>
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/galaxyM31.jpg" alt="galaxyM31" class="img-fluid">
+                                <div class="card-title"> <h5>Samsung Galaxy M31</h5></div>
+                                <br>
+                                <div class="card-text"><h2>17,233/-</h2></div>
+                                <div class="card-text">Samsung Galaxy M31 <br> Description</div>
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/galaxyM51.jpg" alt="galaxyM51" class="img-fluid">
+                                <div class="card-title"> <h5>Samsung Galaxy M51</h5></div>
+                                <br>
+                                <div class="card-text"><h2>24,982/-</h2></div>
+                                <div class="card-text">Samsung Galaxy M51 <br> Description</div>
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/redmi8A.jpg" alt="redmi8A" class="img-fluid">
+                                <div class="card-title"> <h4>RedMi 8 A </h4> </div>
+                                <br>
+                                <div class="card-text"><h2>16,741/-</h2></div>
+                                <div class="card-text">RedMi 8 A <br> Description</div>
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/redmiNote8.jpg" alt="redmiNote8" class="img-fluid">
+                                <div class="card-title"> <h4>RedMi Note 8 </h4> </div>
+                                <br>
+                                <div class="card-text"><h2>23,890/-</h2></div>
+                                <div class="card-text">RedMi Note 8 <br> Description</div>
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 myCardElement">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="images/redmiNotePro9.jpg" alt="redmiNotePro9" class="img-fluid">
+                                <div class="card-title"> <h4>RedMi Note Pro 9 </h4></div>
+                                <br>
+                                <div class="card-text"><h2>23,560/-</h2></div>
+                                <div class="card-text">RedMi Note Pro 9 <br> Description</div>
+                                <button class="btn btn-success" onclick="productClicked(this)" data-clicked-status="false"> Add to cart </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- row end -->
+
+            </div><!-- Container fluid end-->
+            
+        <div class="row">
+
+            <div id="cartView" class="overlay">
+            
+                <div class="overlay-content">
+
+                    <div id="cartTitle" class=" text-center "> 
+                        <h2 style="padding: 10px;">
+                            Edit cart items
+                            <p onclick="closeCart()">
+                                <span class="fas fa-window-close" style="font-weight: lighter;padding-inline: 10px;"></span>
+                            </p>
+                        </h2>
+
+                    </div>  
+
+                    <table class="table cartItem" id="cartTable"> </table>
+                    
+
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div> <!-- Container end-->
+
+        <div id="cartIcon">
+            <button id="cartBtn"  onclick="showCart()" style="outline: none; height: 70px; width: 70px; background-color: rgba(0,0,0,0); border:none"> 
+                <img src="images/shopping-cart.png" class="img-fluid">
+            </button>
+            <p id="nCartItems" style="display: inline; font-size: 20px; font-weight: bolder;">0</p>
+        </div>
+
+    </body>
+
+    <script>
+        var cartContents=[];
+
+
+        function displayNumberOfItemsInCart(){
+            document.getElementById("nCartItems").innerText = cartContents.length;
+        }
+
+        function productClicked(obj){
+            
+            status = obj.dataset.clickedStatus;
+            if(status==="false"){
+                obj.className = "btn btn-danger";
+                obj.innerHTML = "Remove from cart";  
+                obj.dataset.clickedStatus="true";
+                cartContents.push(obj.parentElement);
+                displayNumberOfItemsInCart();
+            }
+            else{
+                obj.className = "btn btn-success";
+                obj.innerHTML = "Add to cart";
+                obj.dataset.clickedStatus="false";  
+                cartContents.pop(obj.parentElement);
+                displayNumberOfItemsInCart();
+            }
+  
+        }
+
+        function showCart(){
+            
+            document.getElementById("cartView").style.width = "100%";
+            var table = document.getElementById("cartTable");
+            table.innerHTML="";
+            var index=0;
+            cartContents.forEach(element => {
+
+                
+                var row = "<tr>";
+                row += "<td style='width: 20%;'> <div class='image'>" + element.childNodes[1].outerHTML + "</div><br><br><div>";
+                row += "<center><a onclick=\"" + "this.parentNode.querySelector('input[type=number]').stepDown()"+"\"class='minus'>" + "<span class='fa fa-minus-circle'></span></a><input type='number' min='0' value='1' class='quantity' disabled>";
+                row += "<a onclick=\"this.parentNode.querySelector('input[type=number]').stepUp()"+"\"class='plus'>";
+                row += "<span class='fa fa-plus-circle'></span></a></center></div></td><td style=\"width: 50%; text-align='left'\" >" + element.childNodes[3].outerHTML + element.childNodes[9].innerText + element.childNodes[7].innerHTML;
+                row += "<b id=\"remove\" onclick=\"remove("+index+")\">REMOVE</b></td><td style='width: 30%;'>Delivery within 3 - 4 days</td></tr>"
+
+                table.innerHTML+=row;
+                index++;
+                console.log(element);
+            });
+            
+        }
+
+        function closeCart(){
+            document.getElementById("cartView").style.width = "0%";
+           
+            
+        }
+
+        function remove(index){
+            cartContents[index].childNodes[11].className="btn btn-success";
+            cartContents[index].childNodes[11].innerHTML="Add to cart";
+            cartContents[index].childNodes[11].dataset.clickedStatus="false";
+            cartContents.splice(index, 1);
+            displayNumberOfItemsInCart();
+            showCart();
+        }
+    </script>
+</html>
